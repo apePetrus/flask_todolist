@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>To-Do List</title>
+</head>
+<body>
+	<h1>To-Do List</h1>
+	<form action="add" method="post">  <!--Submits data to "/add" and triggers the POST method.-->
+		<input type="text" name="content" placeholder="Enter task">
+		<button type="submit">Add Task</button>
+	</form>
+
+	<ul>
+		{% for task in tasks['Task'] %}  <!--For loop to print the todo list-->
+		<li>
+			{{ task }} - {{ tasks['Done'][loop.index0] }}  <!--Prints the task and its status-->
+			<a href="/complete/{{ loop.index0 }}">Mark as Done</a>
+			<a href="/delete/{{ loop.index0 }}">Delete</a>  <!--Links to the delete URL to delete the task's index-->
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

@@ -1,25 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>To-Do List</title>
-</head>
-<body>
-	<h1>To-Do List</h1>
-	<form action="add" method="post">  <!--Submits data to "/add" and triggers the POST method.-->
-		<input type="text" name="content" placeholder="Enter task">
-		<button type="submit">Add Task</button>
-	</form>
+  <head>
+    <meta charset='UTF-8'>
+    <title>To-do List</title>
+  </head>
+  <body>
+    <header>
+      <h1>To-do List</h1>
+    </header>
 
-	<ul>
-		{% for task in tasks['Task'] %}  <!--For loop to print the todo list-->
-		<li>
-			{{ task }} - {{ tasks['Done'][loop.index0] }}  <!--Prints the task and its status-->
-			<a href="/complete/{{ loop.index0 }}">Mark as Done</a>
-			<a href="/delete/{{ loop.index0 }}">Delete</a>  <!--Links to the delete URL to delete the task's index-->
-		</li>
-		{% endfor %}
-	</ul>
-</body>
+    <section>
+      <form action='add' method='post'>  <!-- Submits data to '/add' with post method -->
+        <input name='content' type='text' placholder='Insert new task'>
+        <button type='submit'>Add task</button>
+      </form>
+    </section>
+
+    <section>
+      <table id='taskList'>
+        <thead>
+          <th>Task name</th>
+          <th>Status</th>
+        </thead>
+        <tbody>
+          {% for i in task %}
+          <tr>
+            <td>{{i.task}}</td>
+            <td>{{i.status}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </body>
 </html>

@@ -21,3 +21,13 @@ def add():
     new_task = Tasks(task_content, 'To-do')
     task_list.append(new_task)
     return redirect(url_for('index'))
+
+@app.route('/delete/<int:index>')
+def delete(index):
+    del task_list[index]
+    return redirect(url_for('index'))
+
+@app.route('/done/<int:index>')
+def done(index):
+    task_list[index].status = 'Done'
+    return redirect(url_for('index'))

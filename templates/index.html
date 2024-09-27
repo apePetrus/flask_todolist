@@ -27,6 +27,8 @@
           <tr>
             <td>{{i.task}}</td>
             <td>{{i.status}}</td>
+            <td><a href='/done/{{loop.index0}}'>Mark as done</a></td>
+            <td><a href='/delete/{{loop.index0}}'>Delete</a></td>
           </tr>
           {% endfor %}
         </tbody>

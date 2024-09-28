@@ -17,6 +17,10 @@
     </section>
 
     <section>
+      <a href='/doneonly'>View done tasks</a>
+    </section>
+
+    <section>
       <table id='taskList'>
         <thead>
           <th>Task name</th>
@@ -27,7 +31,11 @@
           <tr>
             <td>{{i.task}}</td>
             <td>{{i.status}}</td>
+            {% if i.status == 'To-do' %}
             <td><a href='/done/{{loop.index0}}'>Mark as done</a></td>
+            {% else %}
+            <td><a href='/todo/{{loop.index0}}'>Mark as to-do</a></td>
+            {% endif %}
             <td><a href='/delete/{{loop.index0}}'>Delete</a></td>
           </tr>
           {% endfor %}
